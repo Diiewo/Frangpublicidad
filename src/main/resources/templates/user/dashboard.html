@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--
+    <p>Bienvenido: <span sec:authentication="name"></span></p>
+    <p>Rol: <span sec:authentication="authorities"></span></p>
+
+    <p><a th:href="@{/}">Home</a></p>
+    <p><a th:href="@{/logout}">Log out</a></p>
+    -->
+    <section>
+        <div class="card mb-3">
+            <img th:src="@{/img/Movil.jpg}"  class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bienvenido: <span sec:authentication="name"></span></h5>
+                <p class="card-text">Rol: <span sec:authentication="authorities"></span></p>
+                <p class="card-text"><small class="text-muted"></small><a  th:href="@{/respuestas-usuario/all}" class="btn btn-danger">ir a respuestas obtenidas</a></p>
+            </div>
+        </div>
+
+
+        <div class="card-group">
+            <div class="card">
+                <img th:src="@{/img/slide1.jpg}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Crear una Solicitud o Servicio</h5>
+                    <p class="card-text">
+                        En Frangpublicidad contamos con una amplia gama de productos y servicios que se
+                        acomode a sus necesidades
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted"></small><a th:href="@{/pqrs/new}"
+                                                             class="btn btn-danger">Crear una Solicitud</a>
+                    </p>
+                    <small class="text-muted">
+                        La confirmacion de las solicitudes o servicios se hacen una vez que se realice el pago.
+                    </small>
+                </div>
+            </div>
+            <!-- <div class="card">
+                    <img th:src="@{/img/disinfection-6823044_1920.png}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Protocolos de bioseguridad</h5>
+                        <p class="card-text">En CONCORD nos preocupa tu seguridad, es por esto que implementamos protocolos
+                            de bioseguridad a nuestros servicios</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Nuestros vehículos son desinfectados una vez que se termine el
+                            servicio</small>
+                    </div>
+                </div>--->
+                <div class="card">
+                    <img th:src="@{/img/headset-6617715_1280-1.png}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Atencion al Cliente</h5>
+                        <p class="card-text">En Frangpublicidad contamos con el personal altamente calificado para atender a sus
+                            necesidades y consultas</p>
+
+                        <p class="card-text"><small class="text-muted"></small><a
+                                                                                  th:href="@{/valoraciones-usuarios/new}"
+                                                                                  class="btn btn-danger">Calificar un
+                            Servicio</a></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Recuerde que tambien nos puede contactar a nuestra linea de WhatsApp (57+ 3227864979)</small>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    </body>
+    </html>

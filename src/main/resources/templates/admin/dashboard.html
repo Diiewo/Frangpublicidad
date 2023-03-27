@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card mb-3">
+        <img th:src="@{/img/admin1.jpg}"  class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Bienvenido: <span sec:authentication="name"></span></h5>
+            <p class="card-text">Rol: <span sec:authentication="authorities"></span></p>
+            <p class="card-text"><small class="text-muted"></small><a  th:href="@{/pqrs-admin/all}" class="btn btn-danger">Solicitudes de clientes</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-calendar"></i>Responder mensajes</h5>
+                    <p class="card-text">Responder mensajes de reservas</p>
+                    <a  th:href="@{/respuestas/all}" class="btn btn-danger">Responder</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-clipboard"></i>Valoraciones de nuestros servicios</h5>
+                    <p class="card-text">Revise las valoraciones</p>
+                    <a  th:href="@{/vehiculos}" class="btn btn-danger">Ver valoraciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Usuarios Registrados en el sistema</h2>
+    <table  class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>ID Usuario</th>
+            <th>CC</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nombre de usuario</th>
+            <th>Numero de Contacto</th>
+            <th>Correo</th>
+
+            <th>Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" usuario: ${usuarioList}">
+
+            <td th:text="${usuario.idusuario}"></td>
+            <td th:text="${usuario.nocedula}"></td>
+            <td th:text="${usuario.nombres}"></td>
+            <td th:text="${usuario.apellidos}"></td>
+            <td th:text="${usuario.nombreusuario}"></td>
+            <td th:text="${usuario.telefono}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.role}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

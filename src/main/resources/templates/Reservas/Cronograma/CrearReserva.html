@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<div layout:fragment="content">
+
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
+
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/cronograma/save}" th:object="${cronograma}">
+
+
+                <div class="mb-3">
+                    <label class="form-label">Fecha Partida</label>
+                    <input type="date" class="form-control" name=""  th:field="*{fechaPartida}"  min="2022-11-01" max="2023-12-31">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('fechaPartida')}" th:errors="*{fechaPartida}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Fecha Llegada</label>
+                    <input type="date" class="form-control" name=""  th:field="*{fechaLlegada}" min="2022-11-01" max="2023-12-31">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('fechaLlegada')}" th:errors="*{fechaLlegada}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Ciudad destino</label>
+                    <select th:field="*{ciudadDestino}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="Bogota">Bogotá</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Cartagena">Cartagena de indias</option>
+                        <option value="Cucuta">Cucuta</option>
+                        <option value="Villavicencio">Villavicencio</option>
+                        <option value="Ibague">Ibagué</option>
+                        <option value="SantaMarta">Santa Marta</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadDestino')}" th:errors="*{ciudadDestino}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ciudad origen</label>
+                    <select th:field="*{ciudadOrigen}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="Bogota">Bogotá</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Cartagena">Cartagena de indias</option>
+                        <option value="Cucuta">Cucuta</option>
+                        <option value="Villavicencio">Villavicencio</option>
+                        <option value="Ibague">Ibagué</option>
+                        <option value="SantaMarta">Santa Marta</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadOrigen')}" th:errors="*{ciudadOrigen}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Direccion Origen</label>
+                    <input type="text" class="form-control" name=""  th:field="*{direccionOrigen}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadOrigen')}" th:errors="*{ciudadOrigen}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Direccion Destino</label>
+                    <input type="text" class="form-control" name=""  th:field="*{direccionDestino}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('direccionDestino')}" th:errors="*{ciudadOrigen}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Asignar vehículo</label>
+                    <select th:field="*{vehiculos}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="vehiculos: ${vehiculos} ">
+                            <option th:text="${vehiculos.descripcion}" th:value="${vehiculos.idvehiculo}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('vehiculos')}" th:errors="*{vehiculos}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Servicio a Solicitar</label>
+                    <select th:field="*{servicio}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="servicio: ${servicio} ">
+                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Asignar Conductor</label>
+                    <select th:field="*{conductor}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="conductor: ${conductor} ">
+                            <option th:text="${conductor.nombre}" th:value="${conductor.idConductor}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('conductor')}" th:errors="*{conductor}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Solicitud a Confirmar</label>
+                    <select th:field="*{solicitudes}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="solicitudes: ${solicitudes} ">
+                            <option th:text="${solicitudes.idSolicitudes}"  th:value="${solicitudes.idSolicitudes}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('solicitudes')}" th:errors="*{solicitudes}"></div>
+
+
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<body>
+
+</body>
+</html>

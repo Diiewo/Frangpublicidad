@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear conductor</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<div layout:fragment="content">
+    <!--<form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
+        <input placeholder="name" type="text" name="" required th:field="*{nomservicio}"><br>
+        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
+        <input type="text" required th:field="*{tipo}"><br>
+
+        <input type="submit" value="Save">
+    </form>-->
+
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
+
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/conductor/save}" th:object="${conductor}">
+
+
+                <div class="mb-3">
+                    <label class="form-label">Color</label>
+                    <select th:field="*{categorialicencia}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="OTROS">OTROS</option>
+                        <option value="Negro">1: Negro</option>
+                        <option value="Azul">2: Azul</option>
+                        <option value="Amarillo">3: Amarillo</option>
+                        <option value="Verde">4: Verde</option>
+                        <option value="Morado">5: Morado</option>
+                        <option value="Blanco">6: Blanco</option>
+                        <option value="Rojo">7: Rojo</option>
+                        <option value="Gris">8: Gris</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('categorialicencia')}" th:errors="*{categorialicencia}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Diseño</label>
+                    <select th:field="*{Arl}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="OTRO">OTROS</option>
+                        <option value="Poralizado">Poralizado</option>
+                        <option value="Tornasol">Tornasol</option>
+                        <option value="Texturizado">Texturizado</option>
+                        <option value="Neutro">Neutro</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Arl')}" th:errors="*{Arl}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Descripcion </label>
+                    <input type="text" class="form-control" name=""  th:field="*{Cedula}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Cedula')}" th:errors="*{Cedula}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Nombres del Vinilo</label>
+                    <input type="text" class="form-control" name=""  th:field="*{nombre}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Gama</label>
+                    <select th:field="*{Eps}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="OTROS">OTROS</option>
+                        <option value="ALTA">ALTA</option>
+                        <option value="MEDIA">MEDIA</option>
+                        <option value="MEDIA/BAJA">MEDIA/BAJA</option>
+                        <option value="BAJA">BAJA</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Eps')}" th:errors="*{Eps}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Valor</label>
+                    <select th:field="*{Seguro}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="NOAPLICA">NO APLICA</option>
+                        <option value="200000">200000</option>
+                        <option value="400000">400000</option>
+                        <option value="550000">550000</option>
+                        <option value="600000">600000</option>
+                        <option value="Mas de 1 millon">Mas de 1 millon</option>
+                    </select>
+                </div>
+
+
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Seguro')}" th:errors="*{Seguro}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Proveedor</label>
+                    <input type="text" class="form-control" name=""  th:field="*{Telefono}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Telefono')}" th:errors="*{Telefono}"></div>
+
+                </br>
+
+
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<body>
+
+</body>
+</html>
